@@ -45,3 +45,8 @@ def create_app(test_config=None):
     app.register_error_handler(500, errorhandling.internal_server_error)
 
     return app
+
+
+if __name__ == "__main__":
+    app = create_app()
+    app.run()
