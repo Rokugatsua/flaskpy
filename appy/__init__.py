@@ -36,17 +36,13 @@ def create_app(test_config=None):
     db.init_app(app)
 
     # INITIALIZE/REGISTERING ROUTE
-    app.add_url_rule('/', endpoint='index')
     
     app.register_blueprint(auth.bp)
     app.register_blueprint(blog.bp)
+    
+    app.add_url_rule('/', endpoint='index')
 
     app.register_error_handler(404, errorhandling.page_not_found)
     app.register_error_handler(500, errorhandling.internal_server_error)
 
     return app
-
-
-if __name__ == "__main__":
-    app = create_app()
-    app.run()
